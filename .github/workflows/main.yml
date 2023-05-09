@@ -1,0 +1,48 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+#       - name: Configure AWS credentials
+#         uses: aws-actions/configure-aws-credentials@v1
+#         with:
+#           aws-region: us-east-2 # change to appropriate region
+#           role-to-assume: arn:aws:iam::111122223333:role/my-repo-iam-role
+#           role-session-name: RepoPublishPackage
+#           role-duration-seconds: 900
+
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Twine
+        run: |
+          pip install wheel twine
+      - name: Build Package
+        run: |
+          python setup.py sdist
+          
+      - name: Upload Artifact
+      
+      
+      
+#       - name: Publish Package
+#         run: |
+#           aws codeartifact login --tool twine --domain my_domain --repository my_repo &&
+#           twine upload --repository codeartifact dist/*
