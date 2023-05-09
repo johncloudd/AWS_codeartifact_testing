@@ -36,7 +36,7 @@ jobs:
           pip install wheel twine
       - name: Build Package
         run: |
-          python setup.py sdist
+          python setup.py sdist --manifest-only
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v3.1.2
