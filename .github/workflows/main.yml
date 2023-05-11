@@ -35,7 +35,7 @@ jobs:
 #           aws-region: us-east-2 # change to appropriate region
 #           role-to-assume: arn:aws:iam::111122223333:role/my-repo-iam-role
 #           role-session-name: RepoPublishPackage
-#           role-duration-seconds: 900 
+#           role-duration-seconds: 900  
 
       - name: Set Up Python
         uses: actions/setup-python@v2
