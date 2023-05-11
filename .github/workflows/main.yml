@@ -59,7 +59,5 @@ jobs:
       
       - name: Publish Package
         run: |
-          aws codeartifact login --tool twine --repository test_actions --domain githubac --domain-owner 567893475207 --region us-east-1
-
-
+          aws codeartifact login --tool twine --domain githubac --repository test_actions && twine upload --repository githubac/test_actions
 
