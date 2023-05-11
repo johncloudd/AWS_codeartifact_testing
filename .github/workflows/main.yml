@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: python_twine
-          path: DIST
+          path: DIST 
       
       
       - name: Publish Package
