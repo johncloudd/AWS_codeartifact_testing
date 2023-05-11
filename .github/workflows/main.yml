@@ -60,3 +60,4 @@ jobs:
       - name: Publish Package
         run: |
           aws codeartifact login --tool pip --repository test-repository --domain artifact-test --domain-owner 567893475207 --region us-east-1
+
