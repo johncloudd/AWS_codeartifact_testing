@@ -59,7 +59,7 @@ jobs:
       
       - name: Publish Package
         run: |
-          aws codeartifact login --tool pip --repository python_app --domain githubaction --domain-owner 283098867869 --region us-east-1
+          aws codeartifact login --tool pip --repository python_app --domain githubaction --domain-owner ${{ secrets.domain }} --region us-east-1
 
 
 
