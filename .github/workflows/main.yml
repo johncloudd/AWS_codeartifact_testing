@@ -17,6 +17,17 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v2
+        
+      - name: Configure AWS Credentials
+        uses: actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
+          role-duration-seconds: 1200
+          role-session-name: MySessionName
 
 #       - name: Configure AWS credentials
 #         uses: aws-actions/configure-aws-credentials@v1
@@ -46,7 +57,6 @@ jobs:
           path: DIST
       
       
-#       - name: Publish Package
-#         run: |
-#           aws codeartifact login --tool twine --domain my_domain --repository my_repo &&
-#           twine upload --repository codeartifact dist/*
+      - name: Publish Package
+        run: |
+          aws codeartifact login --tool pip --repository test-repository --domain artifact-test --domain-owner 567893475207 --region us-east-1
